@@ -17,6 +17,10 @@
     "url": "https://github.com/novemberi/unity-yaml-parser.git"
   },
   "devDependencies": {
+    "@types/node": "^20.11.19",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4"
   }
 }
