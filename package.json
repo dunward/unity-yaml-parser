@@ -1,0 +1,22 @@
+{
+  "name": "unity-yaml-parser",
+  "version": "0.0.7",
+  "license": "MIT",
+  "main": "lib/main.js",
+  "types": "lib/main.d.ts",
+  "description": "Unity scene, asset, prefab yaml data parser",
+  "scripts": {
+    "test": "tsc && node lib/test/index.js"
+  },
+  "keywords": [
+    "unity"
+  ],
+  "author": "elik.song",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/novemberi/unity-yaml-parser.git"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
