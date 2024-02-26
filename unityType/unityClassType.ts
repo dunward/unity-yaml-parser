@@ -1,10 +1,10 @@
-type UnityClass = {
+export type UnityClass = {
     GameObject: GameObject;
 } & {
     MonoBehaviour: MonoBehaviour;
 }
 
-type TagData = {
+export type TagData = {
     classId: string;
     fileId: string;
 }

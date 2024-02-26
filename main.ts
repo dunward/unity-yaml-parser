@@ -1,8 +1,9 @@
 import * as fs from 'fs';
 import * as yaml from 'yaml';
+import * as UnityClassType from './unityType/unityClassType';
 
 export class UnityYamlParser {
-    splitData: string[] = [];
+    private splitData: string[] = [];
 
     constructor(path: string) {
         var data = fs.readFileSync(path, 'utf8');
@@ -17,7 +18,7 @@ export class UnityYamlParser {
             if (matching != null) {
                 var classId = matching[1];
                 var fileId = matching[2];
-                var unityClass: UnityClass = yaml.parse(item.replace(matching[0], ""));
+                var unityClass: UnityClassType.UnityClass = yaml.parse(item.replace(matching[0], ""));
                 result.push(new UnityYamlData(classId, fileId, unityClass));
             }
         });
@@ -28,9 +29,9 @@ export class UnityYamlParser {
 class UnityYamlData {
     classId: string;
     fileId: string;
-    data: UnityClass;
+    data: UnityClassType.UnityClass;
 
-    constructor(classId: string, fileId: string, data: UnityClass) {
+    constructor(classId: string, fileId: string, data: UnityClassType.UnityClass) {
         this.classId = classId;
         this.fileId = fileId;
         this.data = data;
