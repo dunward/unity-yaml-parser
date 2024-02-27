@@ -2,6 +2,10 @@ export type UnityClass = {
     GameObject: GameObject;
 } & {
     MonoBehaviour: MonoBehaviour;
+} & {
+    Transform: Transform;
+} & {
+    RectTransform: RectTransform;
 }
 
 export type TagData = {
