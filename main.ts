@@ -19,7 +19,7 @@ export class UnityYamlParser {
                 var classId = matching[1];
                 var fileId = matching[2];
                 var unityClass: UnityClassType.UnityClass = yaml.parse(item.replace(matching[0], ""));
-                result.push(new UnityYamlData(classId, fileId, unityClass));
+                result.push(new UnityYamlData(classId, fileId, unityClass, matching[3] != undefined));
             }
         });
         return result;
@@ -30,10 +30,12 @@ class UnityYamlData {
     classId: string;
     fileId: string;
     data: UnityClassType.UnityClass;
+    stripped: boolean;
 
-    constructor(classId: string, fileId: string, data: UnityClassType.UnityClass) {
+    constructor(classId: string, fileId: string, data: UnityClassType.UnityClass, stripped: boolean) {
         this.classId = classId;
         this.fileId = fileId;
         this.data = data;
+        this.stripped = stripped;
     }
 }

@@ -26,6 +26,7 @@ interface Transform {
     m_LocalPosition: Vector3;
     m_LocalRotation: Quaternion;
     m_LocalScale: Vector3;
+    m_Father: { fileID: string }
 }
 
 interface RectTransform extends Transform {
