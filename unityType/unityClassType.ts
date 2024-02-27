@@ -24,7 +24,7 @@ interface MonoBehaviour {
 
 interface Transform {
     m_LocalPosition: Vector3;
-    m_LocalRotation: Vector3;
+    m_LocalRotation: Quaternion;
     m_LocalScale: Vector3;
 }
 
@@ -36,4 +36,11 @@ interface Vector3 {
     x: number;
     y: number;
     z: number;
+}
+
+interface Quaternion {
+    x: number;
+    y: number;
+    z: number;
+    w: number;
 }
