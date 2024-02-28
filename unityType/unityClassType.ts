@@ -16,6 +16,7 @@ export type TagData = {
 interface GameObject {
     m_Enabled: number;
     m_Name: string;
+    m_Component: { fileID: string }[];
 }
 
 interface MonoBehaviour {
@@ -27,6 +28,7 @@ interface Transform {
     m_LocalRotation: Quaternion;
     m_LocalScale: Vector3;
     m_Father: { fileID: string }
+    m_GameObject: { fileID: string }
 }
 
 interface RectTransform extends Transform {
