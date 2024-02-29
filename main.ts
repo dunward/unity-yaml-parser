@@ -3,10 +3,10 @@ import * as yaml from 'yaml';
 import * as UnityClassType from './unityType/unityClassType';
 
 
-export function parse(path: string): UnityYamlData[] {
+export function parse(path: string): Map<string, UnityYamlData> {
     var data = fs.readFileSync(path, 'utf8');
     const splitData = data.split('---');
-    var result: UnityYamlData[] = [];
+    var result: Map<string, UnityYamlData> = new Map<string, UnityYamlData>();
     splitData.forEach((item) => {
         var regex = /!u!(\d+) &(\d+)( stripped)?/;
         var matching = item.match(regex);
@@ -14,7 +14,7 @@ export function parse(path: string): UnityYamlData[] {
             var classId = matching[1];
             var fileId = matching[2];
             var unityClass: UnityClassType.UnityClass = yaml.parse(item.replace(matching[0], ""));
-            result.push(new UnityYamlData(classId, fileId, unityClass, matching[3] != undefined));
+            result.set(fileId, new UnityYamlData(classId, fileId, unityClass, matching[3] != undefined));
         }
     });
     return result;
