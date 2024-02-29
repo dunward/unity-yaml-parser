@@ -8,7 +8,7 @@ export function parse(path: string): UnityYamlData[] {
     const splitData = data.split('---');
     var result: UnityYamlData[] = [];
     splitData.forEach((item) => {
-        var regex = /!u!(.*) &(.*)( stripped)?/;
+        var regex = /!u!(\d+) &(\d+)( stripped)?/;
         var matching = item.match(regex);
         if (matching != null) {
             var classId = matching[1];
