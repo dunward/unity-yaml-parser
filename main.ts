@@ -13,7 +13,7 @@ export function parse(path: string): Map<string, UnityYamlData> {
         if (matching != null) {
             var classId = matching[1];
             var fileId = matching[2];
-            var unityClass: UnityClassType.UnityClass = yaml.parse(item.replace(matching[0], ""));
+            var unityClass: UnityClassType.UnityClass = yaml.parse(item.replace(matching[0], ""), { intAsBigInt: true});
             result.set(fileId, new UnityYamlData(classId, fileId, unityClass, matching[3] != undefined));
         }
     });

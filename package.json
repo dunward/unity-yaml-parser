@@ -1,6 +1,6 @@
 {
   "name": "unity-yaml-parser",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
