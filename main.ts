@@ -8,12 +8,24 @@ export function parse(path: string): Map<string, UnityYamlData> {
     const splitData = data.split('---');
     var result: Map<string, UnityYamlData> = new Map<string, UnityYamlData>();
     splitData.forEach((item) => {
-        var regex = /!u!(\d+) &(\d+)( stripped)?/;
-        var matching = item.match(regex);
+        const regex = /!u!(\d+) &(\d+)( stripped)?/;
+
+        const multilineRegex = /'(.|\n)*?'/gm;
+        const matches = item.match(multilineRegex);
+
+        let modifiedYamlString = item;
+        if (matches) {
+            matches.forEach(match => {
+                const modifiedMatch = match.replace(/\n/g, '\\n');
+                modifiedYamlString = modifiedYamlString.replace(match, modifiedMatch);
+            });
+        }
+        
+        var matching = modifiedYamlString.match(regex);
         if (matching != null) {
             var classId = matching[1];
             var fileId = matching[2];
-            var unityClass: UnityClassType.UnityClass = yaml.parse(item.replace(matching[0], ""), { intAsBigInt: true});
+            var unityClass: UnityClassType.UnityClass = yaml.parse(modifiedYamlString.replace(matching[0], ""), { intAsBigInt: true });
             result.set(fileId, new UnityYamlData(classId, fileId, unityClass, matching[3] != undefined));
         }
     });
